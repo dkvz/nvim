@@ -1,11 +1,8 @@
 require("settings")
 -- Set <space> as the leader key
 -- See `:help mapleader`
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
---  I leave these here even though I have a keymap config file outside
---  of here
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- NOTE: mapleader is in the keymap file, otherwise keybinds defined
+-- in there do not work.
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
@@ -216,6 +213,7 @@ require("lazy").setup({
 			spec = {
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>t", group = "[T]oggle" },
+				{ "<leader>b", group = "[B]uffer" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			},
 		},
