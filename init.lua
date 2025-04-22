@@ -791,7 +791,20 @@ require("lazy").setup({
       }--]]
 			-- Disable italic comments material:
 			vim.g.everforest_disable_italic_comment = 1
-			vim.cmd.colorscheme("everforest")
+		end,
+	},
+
+	{
+		"sainnhe/gruvbox-material",
+		priority = 1000, -- Make sure to load this before all the other start plugins.
+		config = function()
+			--[[require('gruvbox-material').setup {
+        styles = {
+          comments = { italic = false }, -- Disable italics in comments
+        },
+      }--]]
+			-- Disable italic comments material:
+			vim.g.gruvbox_material_disable_italic_comment = 1
 		end,
 	},
 
@@ -925,6 +938,9 @@ require("lazy").setup({
 		},
 	},
 })
+
+-- Import color and theming stuff (has to be at the end)
+require("colors")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
