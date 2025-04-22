@@ -784,18 +784,13 @@ require("lazy").setup({
 		"sainnhe/everforest",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		config = function()
-			---@diagnostic disable-next-line: missing-fields
 			--[[require('gruvbox-material').setup {
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
       }--]]
-			-- Disable italic comments for gruvbox material:
+			-- Disable italic comments material:
 			vim.g.everforest_disable_italic_comment = 1
-
-			-- Load the colorscheme here.
-			-- Like many other themes, this one has different styles, and you could load
-			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
 			vim.cmd.colorscheme("everforest")
 		end,
 	},
