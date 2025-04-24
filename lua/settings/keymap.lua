@@ -50,3 +50,9 @@ vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "[B]uffer next" })
 vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "[B]uffer previous" })
 vim.keymap.set("n", "<leader>bb", "<cmd>e #<CR>", { desc = "[B]uffer switch to other" })
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "[B]uffer delete current" })
+
+-- Show those diagnostic messages in a floating window
+-- though <leader>q opens all the diag stuff below
+vim.keymap.set("n", "<leader>ds", function()
+	vim.diagnostic.open_float()
+end, { desc = "[D]iagnostic show float" })
