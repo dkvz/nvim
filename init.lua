@@ -1,8 +1,14 @@
 require("settings")
--- Set <space> as the leader key
--- See `:help mapleader`
 -- NOTE: mapleader is in the keymap file, otherwise keybinds defined
 -- in there do not work.
+
+-- I have some settings specific to Windows only, loading
+-- a file with some options here.
+-- Some plugins might check for the is_windows variable as well.
+local is_windows = string.find(vim.loop.os_uname().sysname, "Windows") ~= nil
+if is_windows then
+	require("windows")
+end
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
