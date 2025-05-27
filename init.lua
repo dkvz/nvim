@@ -592,6 +592,9 @@ require("lazy").setup({
 				html = {},
 				cssls = {},
 				cssmodules_ls = {},
+				--[[ In the end the emmet snippets I want
+        --seem to all be in "friendly snippets" added
+        --as a dependency for luasnip.
 				emmet_language_server = {
 					filetypes = {
 						"css",
@@ -605,7 +608,7 @@ require("lazy").setup({
 						"typescriptreact",
 						"pug",
 					},
-				},
+				},--]]
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
@@ -729,12 +732,12 @@ require("lazy").setup({
 					-- `friendly-snippets` contains a variety of premade snippets.
 					--    See the README about individual language/framework/plugin snippets:
 					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
+					{
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+						end,
+					},
 				},
 				opts = {},
 			},
