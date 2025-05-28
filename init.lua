@@ -734,7 +734,8 @@ require("lazy").setup({
 					return "make install_jsregexp"
 				end)(),
 				config = function()
-					require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/snippets" } })
+					local config_dir = vim.fn.stdpath("config")
+					require("luasnip.loaders.from_lua").load({ paths = { config_dir .. "/snippets" } })
 				end,
 				dependencies = {
 					-- `friendly-snippets` contains a variety of premade snippets.
