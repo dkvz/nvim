@@ -1,6 +1,7 @@
 require("settings")
--- NOTE: mapleader is in the keymap file, otherwise keybinds defined
--- in there do not work.
+-- NOTE: mapleader is in the keymap file
+-- There are other keymaps in this file and sometimes in others too
+-- use grep
 
 -- I have some settings specific to Windows only, loading
 -- a file with some options here.
@@ -737,8 +738,11 @@ require("lazy").setup({
 					return "make install_jsregexp"
 				end)(),
 				config = function()
-					local config_dir = vim.fn.stdpath("config")
-					require("luasnip.loaders.from_lua").load({ paths = { config_dir .. "/snippets" } })
+					-- Adding a way to clear all of luasnip snippets
+					-- using <leader>ts
+					-- Might not be the best idea due to it clearing the cache
+					require("toggle.luasnip")
+					Load_my_snippets()
 				end,
 				dependencies = {
 					-- `friendly-snippets` contains a variety of premade snippets.
