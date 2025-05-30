@@ -6,13 +6,15 @@
 --  highlight NonText ctermbg=none
 --]])
 
-function SetColorScheme(color)
+function SetColorScheme(color, dark)
 	color = color or "gruvbox-material"
+  dark = dark == true
 	-- Setting the color scheme has to happen before
 	-- the transparency options.
 	--print("applying theme " .. color)
 	vim.cmd.colorscheme(color)
 
+  vim.opt.background = dark == true and "dark" or "light"
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
@@ -23,7 +25,7 @@ function SetInitialColorScheme()
 	if theme_from_env == "" then
 		theme_from_env = nil
 	end
-	SetColorScheme(theme_from_env)
+	SetColorScheme(theme_from_env, false)
 end
 
 return {

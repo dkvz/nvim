@@ -1,5 +1,4 @@
 -- Options mostly recycled from my vimrc
-vim.opt.background = "dark"
 vim.opt.linebreak = true
 vim.g.netrw_liststyle = 3
 vim.g.netrw_winsize = 30
