@@ -146,7 +146,7 @@ require("lazy").setup({
 	},
 })
 
-require("plugins.colors")
+-- require("plugins.colors")
 SetInitialColorScheme()
 
 -- The line beneath this is called `modeline`. See `:help modeline`

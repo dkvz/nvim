@@ -1,4 +1,4 @@
--- Legacy way to do it:
+-- Legacy way to do it the transparent background:
 --vim.cmd([[
 --  highlight Normal guibg=none
 --  highlight NonText guibg=none
@@ -35,6 +35,7 @@ return {
 		--'folke/tokyonight.nvim',
 		--'sainnhe/gruvbox-material',
 		"sainnhe/everforest",
+    lazy = true,
 		config = function()
 			--[[require('gruvbox-material').setup {
         styles = {
@@ -45,18 +46,11 @@ return {
 			vim.g.everforest_disable_italic_comment = 1
 		end,
 	},
-
 	{
 		"sainnhe/gruvbox-material",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		lazy = false,
 		config = function()
-			--[[require('gruvbox-material').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
-        },
-      }--]]
-			-- Disable italic comments material:
 			vim.g.gruvbox_material_disable_italic_comment = 1
 		end,
 	},
