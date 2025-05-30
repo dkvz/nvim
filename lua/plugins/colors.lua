@@ -25,7 +25,7 @@ function SetInitialColorScheme()
 	if theme_from_env == "" then
 		theme_from_env = nil
 	end
-	SetColorScheme(theme_from_env, false)
+	SetColorScheme(theme_from_env, true)
 end
 
 return {
