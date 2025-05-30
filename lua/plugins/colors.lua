@@ -6,38 +6,57 @@
 --  highlight NonText ctermbg=none
 --]])
 
+local function isLinux()
+	-- Repeat code also used in init.lua, should put it in some
+	-- kind of util module
+	return string.find(vim.loop.os_uname().sysname, "Linux") ~= nil
+end
+
 function SetColorScheme(color, dark)
 	color = color or "gruvbox-material"
-  dark = dark == true
+	dark = dark == true
 	-- Setting the color scheme has to happen before
 	-- the transparency options.
 	--print("applying theme " .. color)
 	vim.cmd.colorscheme(color)
 
-  vim.opt.background = dark == true and "dark" or "light"
+	vim.opt.background = dark == true and "dark" or "light"
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
 end
 
 function SetInitialColorScheme()
 	-- Look for the DKVZ_THEME env variable:
 	local theme_from_env = os.getenv("DKVZ_THEME")
+	local is_dark = true
 	if theme_from_env == "" then
 		theme_from_env = nil
 	end
-	SetColorScheme(theme_from_env, true)
+	-- When running on Linux, check if we're using
+	-- the "light" theme:
+	if isLinux() then
+		-- If this file exists we enable the light theme:
+		local f = io.open(vim.env.HOME .. "/.local/state/dkvz_colorscheme_light", "r")
+		if f ~= nil then
+			-- We should read the theme from the file but
+			-- I spent way too much time on this thing and
+			-- not on acutal code so I'll leave it as it is
+			-- "shine" is a builtin theme in nvim
+			-- "wildcharm" is another nice one
+			theme_from_env = "shine"
+			is_dark = false
+			io.close(f)
+		end
+	end
+	SetColorScheme(theme_from_env, is_dark)
 end
 
 return {
-	{ -- You can easily change to a different colorscheme.
-		-- Change the name of the colorscheme plugin below, and then
-		-- change the command in the config to whatever the name of that colorscheme is.
-		--
+	{
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-		--'folke/tokyonight.nvim',
-		--'sainnhe/gruvbox-material',
 		"sainnhe/everforest",
-    lazy = true,
+		lazy = true,
 		config = function()
 			--[[require('gruvbox-material').setup {
         styles = {

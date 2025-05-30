@@ -5,4 +5,4 @@ The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/ki
 
 ## TODO
 - Consider using [autopairs](https://github.com/windwp/nvim-autopairs) or mini-pairs (probably better)
-- I'm loading both everforest and gruvbox everytime, I might be able to only load everforest when it's needed
+- I use CamelCase for lua function names sometimes, other times not. I think people use underscores. Maybe?
