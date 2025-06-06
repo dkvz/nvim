@@ -87,7 +87,7 @@ return {
 				providers = {
 					lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 					-- For some reason score_offset doesn't work, lsp is still last with the Rust LSP.
-					snippets = { max_items = 10, min_keyword_length = 2 },
+					snippets = { max_items = 10 },
 				},
 			},
 
