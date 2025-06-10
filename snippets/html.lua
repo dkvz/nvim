@@ -12,3 +12,13 @@ ls.add_snippets("html", {
 		t("</a>"),
 	}),
 })
+
+-- Friendly snippets has a "command" snippet so
+-- I chose the name accordinly.
+ls.add_snippets("html", {
+	s("com", {
+		t("<!-- "),
+		i(1, ""),
+		t(" -->"),
+	}),
+})
