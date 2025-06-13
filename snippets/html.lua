@@ -22,3 +22,11 @@ ls.add_snippets("html", {
 		t(" -->"),
 	}),
 })
+
+ls.add_snippets("html", {
+	s("comt", {
+		t("<!-- TODO: "),
+		i(1, ""),
+		t(" -->"),
+	}),
+})
