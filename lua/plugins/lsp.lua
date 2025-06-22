@@ -231,10 +231,30 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				ts_ls = {},
+				ts_ls = {
+					init_options = {
+						plugins = {
+							{
+								name = "@vue/typescript-plugin",
+								location = "/home/william/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server",
+								-- location = function()
+								-- 	local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+								-- 	return mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+								-- end,
+								languages = { "javascript", "typescript", "vue" },
+							},
+						},
+					},
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+				},
 				html = {},
 				cssls = {},
 				cssmodules_ls = {},
+				vue_ls = {
+					init_options = {
+						vue = { hybridMode = false },
+					},
+				},
 				--[[ In the end the emmet snippets I want
         --seem to all be in "friendly snippets" added
         --as a dependency for luasnip.
