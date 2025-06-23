@@ -1,3 +1,5 @@
+local is_windows = vim.fn.has("win32") == 1
+
 return {
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -220,6 +222,7 @@ return {
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
 			local servers = {
 				-- NOTE: These are the "minimum" LSPs, I add more in a block below
 
@@ -231,30 +234,13 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				ts_ls = {
-					init_options = {
-						plugins = {
-							{
-								name = "@vue/typescript-plugin",
-								location = "/home/william/.local/share/nvim/mason/packages/vue-language-server/node_modules/@vue/language-server",
-								-- location = function()
-								-- 	local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
-								-- 	return mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
-								-- end,
-								languages = { "javascript", "typescript", "vue" },
-							},
-						},
-					},
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
-				},
+				--
+				-- UPDATE FROM ME
+				-- Vue 3 only supports vtsls so here we are
+				vtsls = {},
 				html = {},
 				cssls = {},
 				cssmodules_ls = {},
-				vue_ls = {
-					init_options = {
-						vue = { hybridMode = false },
-					},
-				},
 				--[[ In the end the emmet snippets I want
         --seem to all be in "friendly snippets" added
         --as a dependency for luasnip.
@@ -294,6 +280,31 @@ return {
 				servers.rust_analyzer = {}
 				servers.phpactor = {}
 				servers.bashls = {}
+				servers.vue_ls = {
+					-- init_options = {
+					-- 	vue = { hybridMode = "false" },
+					-- },
+				}
+				-- Making vue and TypeScript work requires
+				-- extra config.
+				-- There's another way to find mason packages by invoking something
+				-- from Mason.
+				local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+				local vue_plug_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+				-- local vue_plug_path = mason_packages
+				-- 	.. "/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+				servers.vtsls.init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = vue_plug_path,
+							languages = { "javascript", "typescript", "vue" },
+							-- No idea what this does lol:
+							configNamespace = "typescript",
+						},
+					},
+				}
+				servers.vtsls.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 			end
 
 			-- Ensure the servers and tools above are installed
@@ -323,7 +334,7 @@ return {
 						local server = servers[server_name] or {}
 						-- This handles overriding only values explicitly passed
 						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
+						-- certain features of an LSP (for example, turning off formatting for TypeScript)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						require("lspconfig")[server_name].setup(server)
 					end,
