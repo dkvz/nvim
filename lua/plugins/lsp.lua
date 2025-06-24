@@ -1,4 +1,5 @@
 local is_windows = vim.fn.has("win32") == 1
+vim.lsp.set_log_level("debug")
 
 return {
 	{
@@ -260,7 +261,7 @@ return {
 				},--]]
 				lua_ls = {
 					-- cmd = { ... },
-					-- filetypes = { ... },
+					--filetypes = {},
 					-- capabilities = {},
 					settings = {
 						Lua = {
@@ -281,9 +282,9 @@ return {
 				servers.phpactor = {}
 				servers.bashls = {}
 				servers.vue_ls = {
-					-- init_options = {
-					-- 	vue = { hybridMode = "false" },
-					-- },
+					init_options = {
+						vue = { hybridMode = true },
+					},
 				}
 				-- Making vue and TypeScript work requires
 				-- extra config.
@@ -298,9 +299,10 @@ return {
 						{
 							name = "@vue/typescript-plugin",
 							location = vue_plug_path,
-							languages = { "javascript", "typescript", "vue" },
+							languages = { "vue" },
 							-- No idea what this does lol:
 							configNamespace = "typescript",
+							enableForWorkspaceTypeScriptVersions = true,
 						},
 					},
 				}
