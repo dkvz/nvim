@@ -1,3 +1,6 @@
+local is_windows = vim.fn.has("win32") == 1
+--vim.lsp.set_log_level("debug")
+
 return {
 	{
 		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -220,6 +223,7 @@ return {
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
 			local servers = {
 				-- NOTE: These are the "minimum" LSPs, I add more in a block below
 
@@ -231,7 +235,10 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				ts_ls = {},
+				--
+				-- UPDATE FROM ME
+				-- Vue 3 only supports vtsls so here we are
+				vtsls = {},
 				html = {},
 				cssls = {},
 				cssmodules_ls = {},
@@ -254,7 +261,7 @@ return {
 				},--]]
 				lua_ls = {
 					-- cmd = { ... },
-					-- filetypes = { ... },
+					--filetypes = {},
 					-- capabilities = {},
 					settings = {
 						Lua = {
@@ -274,6 +281,36 @@ return {
 				servers.rust_analyzer = {}
 				servers.phpactor = {}
 				servers.bashls = {}
+				servers.vue_ls = {
+					init_options = {
+						vue = { hybridMode = true },
+					},
+				}
+				-- Making vue and TypeScript work requires
+				-- extra config.
+				-- There's another way to find mason packages by invoking something
+				-- from Mason.
+				local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+				local vue_plug_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+				-- local vue_plug_path = mason_packages
+				-- 	.. "/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
+				servers.vtsls.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+				servers.vtsls.settings = {
+					vtsls = {
+						tsserver = {
+							globalPlugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = vue_plug_path,
+									languages = { "vue" },
+									-- No idea what this does lol:
+									configNamespace = "typescript",
+									enableForWorkspaceTypeScriptVersions = true,
+								},
+							},
+						},
+					},
+				}
 			end
 
 			-- Ensure the servers and tools above are installed
@@ -295,20 +332,14 @@ return {
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-			require("mason-lspconfig").setup({
-				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-				automatic_installation = false,
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						-- This handles overriding only values explicitly passed
-						-- by the server configuration above. Useful when disabling
-						-- certain features of an LSP (for example, turning off formatting for ts_ls)
-						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
+			for server_name, server in pairs(servers) do
+				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+				-- require("lspconfig")[server_name].setup(server)
+				-- Supposed to be the way to do it now:
+				vim.lsp.config(server_name, server)
+				vim.lsp.enable(server_name)
+			end
+			-- End of the config function afterwards
 		end,
 	},
 }
