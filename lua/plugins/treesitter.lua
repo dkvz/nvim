@@ -18,6 +18,8 @@ return {
 				"vim",
 				"vimdoc",
 				"css",
+				"typescript",
+				"javascript",
 				"vue",
 			},
 			-- Autoinstall languages that are not installed
