@@ -1,5 +1,5 @@
 local is_windows = vim.fn.has("win32") == 1
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
 
 return {
 	{
@@ -294,19 +294,23 @@ return {
 				local vue_plug_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
 				-- local vue_plug_path = mason_packages
 				-- 	.. "/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
-				servers.vtsls.init_options = {
-					plugins = {
-						{
-							name = "@vue/typescript-plugin",
-							location = vue_plug_path,
-							languages = { "vue" },
-							-- No idea what this does lol:
-							configNamespace = "typescript",
-							enableForWorkspaceTypeScriptVersions = true,
+				servers.vtsls.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+				servers.vtsls.settings = {
+					vtsls = {
+						tsserver = {
+							globalPlugins = {
+								{
+									name = "@vue/typescript-plugin",
+									location = vue_plug_path,
+									languages = { "vue" },
+									-- No idea what this does lol:
+									configNamespace = "typescript",
+									enableForWorkspaceTypeScriptVersions = true,
+								},
+							},
 						},
 					},
 				}
-				servers.vtsls.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
 			end
 
 			-- Ensure the servers and tools above are installed
@@ -338,7 +342,9 @@ return {
 						-- by the server configuration above. Useful when disabling
 						-- certain features of an LSP (for example, turning off formatting for TypeScript)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
+						--require("lspconfig")[server_name].setup(server)
+						vim.lsp.config(server_name, server)
+						vim.notify("enabled a LSP")
 					end,
 				},
 			})

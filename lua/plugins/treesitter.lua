@@ -18,6 +18,7 @@ return {
 				"vim",
 				"vimdoc",
 				"css",
+				"vue",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,
