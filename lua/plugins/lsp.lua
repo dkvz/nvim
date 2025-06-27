@@ -311,6 +311,7 @@ return {
 						},
 					},
 				}
+				servers.tailwindcss = {}
 			end
 
 			-- Ensure the servers and tools above are installed

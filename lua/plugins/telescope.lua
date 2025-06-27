@@ -66,6 +66,7 @@ return {
 						".git/",
 						"%.cache",
 						"target/",
+						".nuxt",
 						"%.jpg",
 						"%.jpeg",
 						"%.png",
