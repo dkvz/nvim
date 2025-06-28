@@ -67,6 +67,7 @@ return {
 						"%.cache",
 						"target/",
 						".nuxt",
+						".output",
 						"%.jpg",
 						"%.jpeg",
 						"%.png",
