@@ -11,3 +11,12 @@ vim.opt.smarttab = true
 -- Treesitter is supposed to do the indentation
 -- Hopefully
 --vim.opt.smartindent = true
+
+-- Enable line numbers only for netrw:
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "netrw",
+	callback = function()
+		vim.opt_local.number = true
+		--vim.opt_local.relativenumber = false
+	end,
+})
