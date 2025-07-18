@@ -5,6 +5,7 @@ The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/ki
 
 ## TODO
 - Add a toggle for nvim-autopairs
+- My html snippets should also work in vue files, is that possible?
 - With [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) there's a way to conditionally enable language servers, I should use that instead of my "is_windows" big if (lsp.lua) 
 - I use CamelCase for lua function names sometimes, other times not. I think people use underscores. Maybe?
 - Paste and Yank should also nohls
