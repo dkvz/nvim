@@ -5,6 +5,7 @@ The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/ki
 
 ## TODO
 - Add a toggle for nvim-autopairs
+- Add a toggle for line numbers
 - Add a keymap to run `pwc` (silent)
 - What's up with netrw's sort sequence and .c and .h files?
 - Fork friendly snippets to greatly reduce the amount of them - the HTML LSP has all the tags as well I think
