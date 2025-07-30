@@ -73,6 +73,7 @@ return {
 						"%.png",
 						"%.gif",
 						"%.pdf",
+						"%.ttf",
 					},
 				},
 				pickers = {
