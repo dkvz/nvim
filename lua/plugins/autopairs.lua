@@ -10,4 +10,19 @@ return {
 		npairs.setup()
 		npairs.remove_rule("`")
 	end,
+	keys = {
+		-- Toggle autopairs on and off
+		{
+			"<leader>ta",
+			function()
+				local autopairs = require("nvim-autopairs")
+				if autopairs.state.disabled then
+					autopairs.enable()
+				else
+					autopairs.disable()
+				end
+			end,
+			desc = "Toggle nvim-autopairs",
+		},
+	},
 }
