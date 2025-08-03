@@ -49,6 +49,11 @@ return {
 			-- Telescope picker. This is really useful to discover what Telescope can
 			-- do as well as how to actually do it!
 
+			local separator = "/"
+			if Is_windows == true then
+				separator = "\\"
+			end
+
 			-- [[ Configure Telescope ]]
 			-- See `:help telescope` and `:help telescope.setup()`
 			require("telescope").setup({
@@ -62,10 +67,10 @@ return {
 				-- },
 				defaults = {
 					file_ignore_patterns = {
-						"node_modules/",
-						".git/",
+						"node_modules" .. separator,
+						".git" .. separator,
 						"%.cache",
-						"target/",
+						"target" .. separator,
 						".nuxt",
 						".output",
 						"%.jpg",

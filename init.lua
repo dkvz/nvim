@@ -5,9 +5,9 @@ require("settings")
 
 -- I have some settings specific to Windows only, loading
 -- a file with some options here.
--- Some plugins might check for the is_windows variable as well.
-local is_windows = vim.fn.has("win32") == 1
-if is_windows then
+-- Some plugins might check for the Is_windows variable as well.
+Is_windows = vim.fn.has("win32") == 1
+if Is_windows then
 	require("windows")
 end
 
