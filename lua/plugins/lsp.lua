@@ -1,4 +1,8 @@
+-- I have a global Is_windows variable but prefer re-creating
+-- it to be extra sure
 local is_windows = vim.fn.has("win32") == 1
+
+-- LSP log level can be set:
 --vim.lsp.set_log_level("debug")
 
 return {
@@ -28,28 +32,6 @@ return {
 			"saghen/blink.cmp",
 		},
 		config = function()
-			-- Brief aside: **What is LSP?**
-			--
-			-- LSP is an initialism you've probably heard, but might not understand what it is.
-			--
-			-- LSP stands for Language Server Protocol. It's a protocol that helps editors
-			-- and language tooling communicate in a standardized fashion.
-			--
-			-- In general, you have a "server" which is some tool built to understand a particular
-			-- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-			-- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-			-- processes that communicate with some "client" - in this case, Neovim!
-			--
-			-- LSP provides Neovim with features like:
-			--  - Go to definition
-			--  - Find references
-			--  - Autocompletion
-			--  - Symbol Search
-			--  - and more!
-			--
-			-- Thus, Language Servers are external tools that must be installed separately from
-			-- Neovim. This is where `mason` and related plugins come into play.
-			--
 			-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
 			-- and elegantly composed help section, `:help lsp-vs-treesitter`
 
@@ -220,23 +202,48 @@ return {
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 
+			-- Making vue and TypeScript work requires
+			-- extra config.
+			-- There's another way to find mason packages by invoking something
+			-- from Mason.
+			local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
+			local vue_plug_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
+
 			local servers = {
 				-- NOTE: These are the "minimum" LSPs, I add more in a block below
 
-				-- clangd = {},
-				-- pyright = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
-				-- Some languages (like typescript) have entire language plugins that can be useful:
-				--    https://github.com/pmizio/typescript-tools.nvim
-				--
-				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				--
-				-- UPDATE FROM ME
 				-- Vue 3 only supports vtsls so here we are
-				vtsls = {},
+				vtsls = {
+					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+					settings = {
+						vtsls = {
+							tsserver = {
+								globalPlugins = {
+									{
+										name = "@vue/typescript-plugin",
+										location = vue_plug_path,
+										languages = { "vue" },
+										-- No idea what this does lol:
+										configNamespace = "typescript",
+										enableForWorkspaceTypeScriptVersions = true,
+									},
+								},
+							},
+						},
+					},
+				},
 				html = {},
 				cssls = {},
+				-- For some reason vue_ls requires installing the
+				-- vue-language-server npm package globally on Windows
+				-- Looks like it doesn't on Linux?
+				vue_ls = {
+					init_options = {
+						vue = { hybridMode = true },
+					},
+				},
 				cssmodules_ls = {},
 				--[[ In the end the emmet snippets I want
         --seem to all be in "friendly snippets" added
@@ -277,36 +284,6 @@ return {
 				servers.rust_analyzer = {}
 				servers.phpactor = {}
 				servers.bashls = {}
-				servers.vue_ls = {
-					init_options = {
-						vue = { hybridMode = true },
-					},
-				}
-				-- Making vue and TypeScript work requires
-				-- extra config.
-				-- There's another way to find mason packages by invoking something
-				-- from Mason.
-				local mason_packages = vim.fn.stdpath("data") .. "/mason/packages"
-				local vue_plug_path = mason_packages .. "/vue-language-server/node_modules/@vue/language-server"
-				-- local vue_plug_path = mason_packages
-				-- 	.. "/vue-language-server/node_modules/@vue/language-server/node_modules/@vue/typescript-plugin"
-				servers.vtsls.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
-				servers.vtsls.settings = {
-					vtsls = {
-						tsserver = {
-							globalPlugins = {
-								{
-									name = "@vue/typescript-plugin",
-									location = vue_plug_path,
-									languages = { "vue" },
-									-- No idea what this does lol:
-									configNamespace = "typescript",
-									enableForWorkspaceTypeScriptVersions = true,
-								},
-							},
-						},
-					},
-				}
 				servers.tailwindcss = {}
 			end
 
