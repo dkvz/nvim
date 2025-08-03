@@ -236,6 +236,7 @@ return {
 				},
 				html = {},
 				cssls = {},
+				tailwindcss = {},
 				-- For some reason vue_ls requires installing the
 				-- vue-language-server npm package globally on Windows
 				-- Looks like it doesn't on Linux?
@@ -284,7 +285,6 @@ return {
 				servers.rust_analyzer = {}
 				servers.phpactor = {}
 				servers.bashls = {}
-				servers.tailwindcss = {}
 			end
 
 			-- Ensure the servers and tools above are installed
