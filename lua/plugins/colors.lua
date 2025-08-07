@@ -22,6 +22,9 @@ function SetColorScheme(color, dark)
 
 	vim.opt.background = dark == true and "dark" or "light"
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- BG for "non current" window, also applies to what's behind
+	-- telescope when it gets opened:
+	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
 end
