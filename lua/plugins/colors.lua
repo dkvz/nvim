@@ -6,13 +6,13 @@
 --  highlight NonText ctermbg=none
 --]])
 
-local function isLinux()
+local function is_linux()
 	-- Repeat code also used in init.lua, should put it in some
 	-- kind of util module
 	return string.find(vim.loop.os_uname().sysname, "Linux") ~= nil
 end
 
-function SetColorScheme(color, dark)
+function Set_color_scheme(color, dark)
 	color = color or "gruvbox-material"
 	dark = dark == true
 	-- Setting the color scheme has to happen before
@@ -29,7 +29,7 @@ function SetColorScheme(color, dark)
 	vim.api.nvim_set_hl(0, "NonText", { bg = "none" })
 end
 
-function SetInitialColorScheme()
+function Set_initial_color_scheme()
 	-- Look for the DKVZ_THEME env variable:
 	local theme_from_env = os.getenv("DKVZ_THEME")
 	local is_dark = true
@@ -38,7 +38,7 @@ function SetInitialColorScheme()
 	end
 	-- When running on Linux, check if we're using
 	-- the "light" theme:
-	if isLinux() then
+	if is_linux() then
 		-- If this file exists we enable the light theme:
 		local f = io.open(vim.env.HOME .. "/.local/state/dkvz_colorscheme_light", "r")
 		if f ~= nil then
@@ -52,7 +52,7 @@ function SetInitialColorScheme()
 			io.close(f)
 		end
 	end
-	SetColorScheme(theme_from_env, is_dark)
+	Set_color_scheme(theme_from_env, is_dark)
 end
 
 return {
