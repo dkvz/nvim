@@ -41,7 +41,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- Translating my very few custom keybinds from vim:
 --vim.keymap.set("n", "<C-l>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>cl", "<cmd>nohlsearch<CR>", { desc = "[C]lear search highlights" })
-vim.keymap.set({ "i", "v" }, "<C-c>", "<cmd>nohlsearch<CR><Esc>")
+vim.keymap.set({ "i", "v", "s" }, "<C-c>", "<cmd>nohlsearch<CR><Esc>")
 
 -- Buffer navigation - These are also used by lazy.vim
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous Buffer" })
