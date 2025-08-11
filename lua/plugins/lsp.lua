@@ -285,6 +285,7 @@ return {
 				servers.rust_analyzer = {}
 				servers.phpactor = {}
 				servers.bashls = {}
+				servers.angularls = {}
 			end
 
 			-- Ensure the servers and tools above are installed
