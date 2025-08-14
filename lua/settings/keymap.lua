@@ -57,3 +57,6 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "[B]uffer delete 
 -- vim.keymap.set("n", "<leader>ds", function()
 -- 	vim.diagnostic.open_float()
 -- end, { desc = "[D]iagnostic show float" })
+
+-- Run my pwc command to copy current directory to clipboard
+vim.keymap.set("n", "<leader>pc", "<cmd>silent !pwc<CR>", { desc = "Copy current directory to clipboard" })

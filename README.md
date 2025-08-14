@@ -7,7 +7,6 @@ The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/ki
 - I might no longer need the extra config for the vue LSP (it's in nvim-lspconfig I think)
 - I need to find out how to upgrade only one item with Lazy and not the whole ordeal
 - Add a toggle for line numbers
-- Add a keymap to run `pwc` (silent)
 - What's up with netrw's sort sequence and .c and .h files?
 - Fork friendly snippets to greatly reduce the amount of them - the HTML LSP has all the tags as well I think
     - Not a fan of a lot of the JS snippets

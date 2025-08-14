@@ -106,6 +106,7 @@ return {
 				{ "<leader>b", group = "[B]uffer" },
 				{ "<leader>d", group = "[D]iagnostic" },
 				{ "<leader>c", group = "[C]lear" },
+				{ "<leader>p", group = "Copy and [P]aste" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			},
 		},
