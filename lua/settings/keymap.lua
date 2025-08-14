@@ -53,6 +53,7 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "[B]uffer delete 
 
 -- Show those diagnostic messages in a floating window
 -- though <leader>q opens all the diag stuff below
-vim.keymap.set("n", "<leader>ds", function()
-	vim.diagnostic.open_float()
-end, { desc = "[D]iagnostic show float" })
+-- THIS ALREADY HAS A KEYMAP: Ctrl+w,d
+-- vim.keymap.set("n", "<leader>ds", function()
+-- 	vim.diagnostic.open_float()
+-- end, { desc = "[D]iagnostic show float" })
