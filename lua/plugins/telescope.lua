@@ -72,6 +72,7 @@ return {
 						"%.cache",
 						"target" .. separator,
 						".nuxt",
+						".angular",
 						".output",
 						"%.jpg",
 						"%.jpeg",
