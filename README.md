@@ -11,3 +11,4 @@ The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/ki
 - With [mason-tool-installer](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim) there's a way to conditionally enable language servers, I should use that instead of my "is_windows" big if (lsp.lua) 
 - Indent detection is sometimes wrong in html files (in mosts files I wrote using another editor)
 - Is there a way to put LSP diag text elsewhere?
+- Try removing the LSP keybinds, I think they're the default ones
