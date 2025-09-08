@@ -13,7 +13,7 @@ local function is_linux()
 end
 
 function Set_color_scheme(color, dark)
-	color = color or "gruvbox-material"
+	color = color or "everforest"
 	dark = dark == true
 	-- Setting the color scheme has to happen before
 	-- the transparency options.
@@ -59,21 +59,16 @@ return {
 	{
 		-- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
 		"sainnhe/everforest",
-		lazy = true,
+		priority = 1000,
+		lazy = false,
 		config = function()
-			--[[require('gruvbox-material').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
-        },
-      }--]]
 			-- Disable italic comments material:
 			vim.g.everforest_disable_italic_comment = 1
 		end,
 	},
 	{
 		"sainnhe/gruvbox-material",
-		priority = 1000, -- Make sure to load this before all the other start plugins.
-		lazy = false,
+		lazy = true,
 		config = function()
 			vim.g.gruvbox_material_disable_italic_comment = 1
 		end,
