@@ -10,9 +10,9 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smarttab = true
--- Treesitter is supposed to do the indentation
--- Hopefully
---vim.opt.smartindent = true
+-- Not sure this does anything
+-- with treesitter indent enabled
+vim.opt.smartindent = true
 
 -- Enable line numbers only for netrw:
 vim.api.nvim_create_autocmd("FileType", {
