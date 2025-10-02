@@ -13,6 +13,8 @@ vim.opt.smarttab = true
 -- Not sure this does anything
 -- with treesitter indent enabled
 vim.opt.smartindent = true
+-- Remove line for command when not used
+vim.opt.cmdheight = 0
 
 -- Enable line numbers only for netrw:
 vim.api.nvim_create_autocmd("FileType", {
