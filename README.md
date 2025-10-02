@@ -5,7 +5,6 @@ The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/ki
 
 ## TODO
 - Telescope insert to normal mode doesn't work with Ctrl+C, is there a way to make it work?
-- I don't really use "mini" for anything right now except the status bar - I should try another status bar plugin (more minimalistic is OK)
 - I might no longer need the extra config for the vue LSP (it's in nvim-lspconfig I think)
 - Fork friendly snippets to greatly reduce the amount of them - the HTML LSP has all the tags as well I think
     - Not a fan of a lot of the JS snippets
