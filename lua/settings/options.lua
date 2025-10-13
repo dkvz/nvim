@@ -1,6 +1,7 @@
 -- Options mostly recycled from my vimrc
 vim.opt.linebreak = true
 vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 0
 --vim.g.netrw_winsize = 30
 -- Supposed to make splits always equal in size:
 vim.opt.equalalways = true
