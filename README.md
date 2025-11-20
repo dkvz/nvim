@@ -4,6 +4,7 @@ Trying out Neovim as an IDE for some time. Source controlling my config here.
 The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) repo.
 
 ## TODO
+- Probably need to add a shortcut for [that as well](https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window)
 - Need a shortcut to close the quickfix list (is there one already?)
 - Telescope insert to normal mode doesn't work with Ctrl+C, is there a way to make it work?
 - I might no longer need the extra config for the vue LSP (it's in nvim-lspconfig I think)
