@@ -4,6 +4,7 @@ Trying out Neovim as an IDE for some time. Source controlling my config here.
 The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) repo.
 
 ## TODO
+- My undos are borked. If I open a "different path" I can no longer undo up to the old one
 - I don't want small deletions like pressing "x" to go to the clipboard but they do?
 - Probably need to add a shortcut for [that as well](https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window)
 - Need a shortcut to close the quickfix list (is there one already?)
