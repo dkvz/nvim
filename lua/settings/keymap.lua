@@ -43,6 +43,11 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<leader>cl", "<cmd>nohlsearch<CR>", { desc = "[C]lear search highlights" })
 vim.keymap.set({ "i", "v", "s" }, "<C-c>", "<cmd>nohlsearch<CR><Esc>")
 
+-- Prevents some of the "small deletions" from overwriting
+-- registers (and the clipboard)
+vim.keymap.set({ "n", "v" }, "x", '"_x')
+vim.keymap.set({ "n", "v" }, "X", '"_X')
+
 -- Buffer navigation - These are also used by lazy.vim
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "Previous Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "Next Buffer" })
@@ -62,6 +67,6 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "[B]uffer delete 
 vim.keymap.set("n", "<leader>pc", "<cmd>silent !pwc<CR>", { desc = "Copy current directory to clipboard" })
 
 -- Toggle line numbers
-vim.keymap.set("n", "<leader>tn", function ()
-  vim.o.number = not vim.o.number
+vim.keymap.set("n", "<leader>tn", function()
+	vim.o.number = not vim.o.number
 end, { desc = "Toggle line [N]umbers" })
