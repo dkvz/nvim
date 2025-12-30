@@ -70,3 +70,24 @@ vim.keymap.set("n", "<leader>pc", "<cmd>silent !pwc<CR>", { desc = "Copy current
 vim.keymap.set("n", "<leader>tn", function()
 	vim.o.number = not vim.o.number
 end, { desc = "Toggle line [N]umbers" })
+
+-- Toggle quickfix list (Claude wrote that one)
+local function toggle_quickfix()
+	local qf_exists = false
+	for _, win in pairs(vim.fn.getwininfo()) do
+		if win["quickfix"] == 1 then
+			qf_exists = true
+		end
+	end
+	if qf_exists then
+		vim.cmd("cclose")
+	else
+		vim.cmd("copen")
+	end
+end
+
+-- Set keymap to toggle quickfix (using <leader>q)
+vim.keymap.set("n", "<leader>tq", toggle_quickfix, {
+	desc = "Toggle quickfix list",
+	silent = true,
+})
