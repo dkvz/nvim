@@ -1,7 +1,5 @@
 require("settings")
 -- NOTE: mapleader is in the keymap file
--- There are other keymaps in this file and sometimes in others too
--- use grep
 
 -- I have some settings specific to Windows only, loading
 -- a file with some options here.
