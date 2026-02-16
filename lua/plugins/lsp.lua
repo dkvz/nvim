@@ -278,6 +278,7 @@ return {
 				servers.rust_analyzer = {}
 				servers.phpactor = {}
 				servers.bashls = {}
+				servers.basedpyright = {}
 			end
 
 			-- Ensure the servers and tools above are installed

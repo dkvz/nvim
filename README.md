@@ -3,6 +3,18 @@ Trying out Neovim as an IDE for some time. Source controlling my config here.
 
 The starting point was the great [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) repo.
 
+## Required packages
+
+I forgot to write these down uh... From memory:
+
+* fzf
+* fd
+* rg
+* npm
+* luarocks
+* python3-venv (for basedpyright)
+* C compiler (zig is the best one for Windows)
+
 ## TODO
 - Probably need to add a shortcut for [that as well](https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window)
 - I might no longer need the extra config for the vue LSP (it's in nvim-lspconfig I think)
