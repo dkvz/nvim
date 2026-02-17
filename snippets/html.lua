@@ -33,6 +33,6 @@ ls.add_snippets("html", {
 
 ls.add_snippets("html", {
 	s("wp", {
-		t("/wp-content/stuff"),
+		t("/wp-content/stuff/"),
 	}),
 })
