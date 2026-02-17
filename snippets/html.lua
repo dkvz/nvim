@@ -30,3 +30,9 @@ ls.add_snippets("html", {
 		t(" -->"),
 	}),
 })
+
+ls.add_snippets("html", {
+	s("wp", {
+		t("/wp-content/stuff"),
+	}),
+})
