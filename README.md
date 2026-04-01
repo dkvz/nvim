@@ -14,8 +14,10 @@ I forgot to write these down uh... From memory:
 * luarocks
 * python3-venv (for basedpyright)
 * C compiler (zig is the best one for Windows)
+* [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md#installation)
 
 ## TODO
+- Too much stuff has changed, need to check what's up with the latest state of the kickstart repo
 - Probably need to add a shortcut for [that as well](https://stackoverflow.com/questions/4465095/how-to-delete-a-buffer-in-vim-without-losing-the-split-window)
 - I might no longer need the extra config for the vue LSP (it's in nvim-lspconfig I think)
 - Fork friendly snippets to greatly reduce the amount of them - the HTML LSP has all the tags as well I think
