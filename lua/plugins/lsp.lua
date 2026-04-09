@@ -164,6 +164,7 @@ return {
 						[vim.diagnostic.severity.HINT] = "󰌶 ",
 					},
 				} or {},
+				jump = { float = true },
 				virtual_text = {
 					source = "if_many",
 					spacing = 2,
