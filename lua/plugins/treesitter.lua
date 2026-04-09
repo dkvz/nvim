@@ -22,6 +22,7 @@ return {
 			"vimdoc",
 			"javascript",
 			"typescript",
+			"php",
 		}
 		require("nvim-treesitter").install(parsers)
 
