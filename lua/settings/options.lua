@@ -16,6 +16,8 @@ vim.opt.smarttab = true
 vim.opt.smartindent = true
 -- Remove line for command when not used
 vim.opt.cmdheight = 0
+-- I had to add this for a Fedora box
+vim.opt.termguicolors = true
 
 -- Fix cmdheight = 0 completely hiding macro recording
 -- status
