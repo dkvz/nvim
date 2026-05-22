@@ -43,4 +43,4 @@ end
 -- Create a command to toggle
 vim.api.nvim_create_user_command("ToggleLuaSnip", toggle_luasnip, {})
 -- Add a keybind
-vim.keymap.set("n", "<leader>ts", toggle_luasnip, { desc = "Toggle LuaSnip" })
+vim.keymap.set("n", "<leader>ts", toggle_luasnip, { desc = "Toggle Lua[S]nip" })

@@ -88,6 +88,26 @@ end
 
 -- Set keymap to toggle quickfix (using <leader>q)
 vim.keymap.set("n", "<leader>tq", toggle_quickfix, {
-	desc = "Toggle quickfix list",
+	desc = "Toggle [q]uickfix list",
 	silent = true,
 })
+
+-- Toggle spell checking on and off for EN or FR
+local function toggle_spell(lang)
+	if vim.o.spell and vim.o.spelllang == lang then
+		vim.o.spell = false
+	else
+		vim.o.spelllang = lang
+		vim.o.spell = true
+	end
+end
+
+-- "t f" → French spell check
+vim.keymap.set("n", "<leader>tf", function()
+	toggle_spell("fr")
+end, { desc = "Toggle [F]rench spell check" })
+
+-- "t e" → English spell check
+vim.keymap.set("n", "<leader>te", function()
+	toggle_spell("en")
+end, { desc = "Toggle [E]nglish spell check" })

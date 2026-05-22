@@ -22,7 +22,7 @@ return {
 					autopairs.disable()
 				end
 			end,
-			desc = "Toggle nvim-autopairs",
+			desc = "Toggle nvim-[a]utopairs",
 		},
 	},
 }
