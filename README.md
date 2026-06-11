@@ -13,8 +13,15 @@ I forgot to write these down uh... From memory:
 * npm
 * luarocks
 * python3-venv (for basedpyright)
-* C compiler (zig is the best one for Windows)
+* C compiler, gcc is the easiest to install on Linux (see note below for Windows)
 * [Tree-sitter CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md#installation)
+
+### C compiler on Windows
+On Windows, the C compiler can no longer be Zig and MSVC is extremely fickle.
+
+The best way I found is to just download Mingw from [their releases page](https://github.com/niXman/mingw-builds-binaries/releases).
+
+For example, the `x86_64-16.1.0-release-posix-seh-ucrt-rt_v14-rev1.7z` asset works for my Windows system, provided "gcc" and its other friends and in the PATH and there's the env variable "CC" set to "gcc".
 
 ## TODO
 - Autocmd to clear search highlight when saving
