@@ -71,5 +71,24 @@ return {
 				end
 			end,
 		})
+
+		-- Attempt to add tree-sitter syntax for lilypond (music notation)
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "TSUpdate",
+			callback = function()
+				require("nvim-treesitter.parsers").lilypond = {
+					install_info = {
+						url = "https://github.com/nwhetsell/tree-sitter-lilypond",
+						-- optional entries:
+						generate = true, -- only needed if repo does not contain pre-generated `src/parser.c`
+						location = "lilypond",
+						generate_from_json = true, -- only needed if repo does not contain `src/grammar.json` either
+						queries = "queries", -- also install queries from given directory
+					},
+				}
+			end,
+		})
+
+		vim.treesitter.language.register("lilypond", { "ly" })
 	end,
 }
