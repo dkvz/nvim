@@ -23,6 +23,13 @@ The best way I found is to just download Mingw from [their releases page](https:
 
 For example, the `x86_64-16.1.0-release-posix-seh-ucrt-rt_v14-rev1.7z` asset works for my Windows system, provided "gcc" and its other friends and in the PATH and there's the env variable "CC" set to "gcc".
 
+## Lilypond tree-sitter support
+Might require running:
+```
+:TSUpdate
+:TSInstall lilypond
+```
+
 ## TODO
 - Autocmd to clear search highlight when saving
 - Too much stuff has changed, need to check what's up with the latest state of the kickstart repo
