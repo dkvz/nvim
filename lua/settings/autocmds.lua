@@ -8,9 +8,16 @@ vim.api.nvim_create_autocmd("RecordingEnter", {
 		vim.opt.cmdheight = 1
 	end,
 })
+
 vim.api.nvim_create_autocmd("RecordingLeave", {
 	callback = function()
 		vim.opt.cmdheight = 0
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	callback = function()
+		vim.fn.setreg("/", "")
 	end,
 })
 
