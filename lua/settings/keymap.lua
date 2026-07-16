@@ -66,6 +66,9 @@ vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "[B]uffer delete 
 -- Run my pwc command to copy current directory to clipboard
 vim.keymap.set("n", "<leader>pc", "<cmd>silent !pwc<CR>", { desc = "Copy current directory to clipboard" })
 
+-- Runs the makeprg:
+vim.keymap.set("n", "<leader>m", "<cmd>make<CR>", { desc = "Run :make" })
+
 -- Toggle line numbers
 vim.keymap.set("n", "<leader>tn", function()
 	vim.o.number = not vim.o.number
