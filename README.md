@@ -32,7 +32,6 @@ Might require running:
 
 ## TODO
 - Would be cool to automatically open netrw when closing the last buffer
-- autoread doesn't always work?
 - When using the :make command I should add something to auto ":wa" save everything
 - lilypond auto-indentation is wrong since tree-sitter support was added, might need to manually set the indent to not use tree-sitter
 - Too much stuff has changed, need to check what's up with the latest state of the kickstart repo
