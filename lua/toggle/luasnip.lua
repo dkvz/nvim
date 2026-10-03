@@ -16,13 +16,9 @@ function Load_my_snippets()
 	})
 end
 
-local function load_vendor_snippets()
-	-- Friendly snippets are loaded from the config
-	-- function in their dependency section and I
-	-- don't want to move it around too much.
-	-- This line is repeated in the config function
-	-- for the snippets but hey it works.
+function Load_vendor_snippets()
 	require("luasnip.loaders.from_vscode").lazy_load()
+	luasnip.filetype_extend("php", { "html" })
 end
 
 local function toggle_luasnip()
@@ -33,7 +29,7 @@ local function toggle_luasnip()
 	else
 		-- Reload your snippets here
 		Load_my_snippets()
-		load_vendor_snippets()
+		Load_vendor_snippets()
 
 		luasnip_enabled = true
 		print("LuaSnip snippets added back in")
